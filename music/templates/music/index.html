@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<head>
+<title>musIV||music by Ivjot</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="All the new Punjabi songs are here for free download. Play the latest mp3 music, including sad songs, wedding &amp; Bhangra dance music right now. DJ the latest playlist!">
+<meta name="keywords" content="New Punjabi Songs Free Download, Miss Pooja, Mr Jatt, Newpunjabisongs, Punjabimusic, Gurdas Mann, Diljit, Oldpunjabisongs, Punjabimp3Songs, Gippy Grewal, Diljit, Classic, Top 50, Top 10, Play, Playlist">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% load staticfiles %}
+<link href='https://fonts.googleapis.com/css?family=Satisfy'  rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<link href="{% static 'music/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{% static 'music/stylee.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'music/component.css' %}" />
+
+<script type="text/javascript" src={% static "music/js/modernizr.custom.js" %}></script>
+<script type="text/javascript" src={% static "music/js/move-top.js" %}></script>
+<script type="text/javascript" src={% static "music/js/easing.js" %}></script>
+
+
+<style type="text/css">
+body {
+  font-size: 100%;
+
+}
+
+
+/* Carousel Styling */
+.slide1{
+  font-size: 62.5%;
+  font-family: arial, sans-serif;
+  background-image: url({% static "music/images/bkgrnd1.jpg" %});
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+.slide2{
+	font-size: 62.5%;
+  font-family: arial, sans-serif;
+  background-image: url({% static "music/images/bkgrnd2.jpg" %});
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide3{
+	font-size: 62.5%;
+  font-family: arial, sans-serif;
+  background-image: url({% static "music/images/bkgrnde3.jpg" %});
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.carousel-caption h1{
+  font-size: 3.1em;
+  font-family: 'Pacifico', cursive;
+  padding-bottom: .6em;
+}
+.carousel-caption p{
+  font-size: 2em;
+}
+</style>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">musIV</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li class="">
+                    <a href="{% url 'music:albums' %}">
+                        <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp;
+                        Albums
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{% url 'music:songs' 'all' %}">
+                        <span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp;
+                        Songs
+                    </a>
+                </li>
+
+
+            </ul>
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'music:albums' %}">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li class="">
+                    <a href="{% url 'music:logout_user' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Logout
+
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</nav>
+   <div id="theCarousel" class="carousel slide" data-ride="carousel">
+
+  		<ol class="carousel-indicators">
+    	<li data-target="#theCarousel" data-slide-to="0" class="active"> </li >
+    	<li data-target="#theCarousel" data-slide-to="1"> </li>
+    	<li data-target ="#theCarousel" data-slide-to="2"> </li>
+  		</ol >
+
+  <div class="carousel-inner">
+    <div class="item active" >
+        <a href="{% url 'music:punjabi' %}"	>
+    <div class ="slide1"></div>
+</a>
+    <div class="carousel-caption">
+      <h1>Punjabi Beats</h1>
+      <p></p>
+
+        </div>
+  </div>
+
+
+  <div class="item">
+      <a href="{% url 'music:english' %}"	>
+  <div class="slide2"></div>
+          </a>
+  <div class="carousel-caption">
+    <h1>English shizz</h1>
+    <p></p>
+
+  </div>
+  </div>
+
+
+  <div class="item">
+  <a href="{% url 'music:hindi' %}"	>
+  <div class="slide3"></div>
+      </a>
+  <div class="carousel-caption">
+  <h1>Bollywood Trends</h1>
+  <p></p>
+
+  </div>
+  </div>
+  </div>
+
+  <a class="left carousel-control" href="#theCarousel" data-slide="prev">
+  <span class="glyphicon glyphicon-chevron-left"> </span>
+  </a>
+  <a class="right carousel-control" href="#theCarousel" data-slide="next">
+  <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  </div>
+
+
+  <div class="navigation">
+
+		<div class="nav-left">
+
+				<ul class="nav1">
+					<li class="hvr-underline-from-left button2"><a class="active" href="{% url 'music:index' %}">Home</a></li>
+					<li class="hvr-underline-from-left button2"><a href="">        </a></li>
+					<li class="hvr-underline-from-left button2"><a href="{% url 'music:punjabi' %}">Punjabi Music</a></li>
+					<li class="hvr-underline-from-left button2"><a href="about.html">        </a></li>
+					<li class="hvr-underline-from-left button2"><a href="{% url 'music:english' %}">English Music</a></li>
+					<li class="hvr-underline-from-left button2"><a href="about.html">        </a></li>
+					<li class="hvr-underline-from-left button2"><a href="{% url 'music:hindi' %}">Hindi Music</a></li>
+					<li class="hvr-underline-from-left button2"><a href="about.html">        </a></li>
+			   		<li class="hvr-underline-from-left button2"><a href="{% url 'music:edm' %}">EDM</a></li>
+			   		<li class="hvr-underline-from-left button2"><a href="about.html">        </a></li>
+			   		<li class="hvr-underline-from-left button2"><a href="{% url 'music:devotional' %}">Devotional</a></li>
+			   		<li class="hvr-underline-from-left button2"><a href="about.html">        </a></li>
+			   		<li class="hvr-underline-from-left button2"><a href="{% url 'music:workout' %}">workout</a></li>
+
+				</ul>
+        </div>
+			<div class="nav-right">
+				<ul>
+					<li><a href="https://www.facebook.com/singhivjots" class="f1"></a></li>
+				</ul>
+			</div>
+		<div class="clearfix"></div>
+	</div>
+
+
+<!-- banner -->
+<br>
+        </br>
+        <br>
+        </br>
+<div class="banner">
+	<div class="col-lg-3 col-md-3 banner-left">
+<div class="col-md-1">
+        <div class="col-sm-12">
+            <h2>Trending</h2>
+            <h3>Albums</h3>
+        </div>
+                <br>
+                </br>
+                <br>
+</br>
+        {% if albums %}
+            {% for album in albums %}
+
+                <div class="col-sm-4 col-lg-2 col-md-2">
+                    <div class="thumbnail">
+                        <a href="{% url 'music:detail' album.id %}">
+                            <img src="{{ album.album_logo.url }}" alt="album logo" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h3>{{ album.album_title }}</h3>
+                            <h5>{{ album.artist }}</h5>
+
+                            <!-- View Details -->
+                            <a href="{% url 'music:detail' album.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+
+
+                        <br>
+                        </br>
+                        <br>
+                        </br>
+
+                            <!-- Favorite Album
+
+
+-->
+                        </div>
+                    </div>
+                </div>
+                {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+            {% endfor %}
+        {% else %}
+            <div class="col-sm-12">
+                <br>
+
+            </div>
+        {% endif %}
+    </div>
+
+        </div>
+        <div class="col-md-9 banner-right">
+	<div class="effect-grid">
+		<h3 class="tittle">GENRE</h3>
+		<ul class="grid cs-style-3">
+            <a href="{% url 'music:punjabi' %}"	>
+				<li>
+					<figure>
+						<img src="{% static "music/images/g1.jpg" %}" >
+						<figcaption>
+							<h4>Punjabi</h4>
+						</figcaption>
+					</figure>
+				</li>
+            </a>
+            <a href="{% url 'music:english' %}"	>
+				<li>
+					<figure>
+						<img src="{% static "music/images/g2.jpg" %}" alt="img03">
+						<figcaption>
+							<h4>English</h4>
+						</figcaption>
+					</figure>
+				</li>
+            </a>
+            <a href="{% url 'music:hindi' %}"	>
+				<li>
+					<figure>
+						<img src="{% static "music/images/g3.jpg" %}" alt="img06">
+						<figcaption>
+							<h4>Hindi</h4>
+						</figcaption>
+					</figure>
+				</li>
+            </a>
+            <a href="{% url 'music:edm' %}"	>
+				<li>
+					<figure>
+						<img src="{% static "music/images/g4.jpg" %}" alt="img04">
+						<figcaption>
+							<h4>EDM</h4>
+						</figcaption>
+					</figure>
+				</li>
+            </a>
+            <a href="{% url 'music:devotional' %}"	>
+				<li>
+					<figure>
+						<img src="{% static "music/images/g5.jpg" %}" alt="img05">
+						<figcaption>
+							<h4>DEVOTIONAL</h4>
+						</figcaption>
+					</figure>
+				</li>
+                </a>
+            <a href="{% url 'music:workout' %}"	>
+				<li>
+					<figure>
+
+                        <img src="{% static "music/images/g6.jpg" %}" alt="img01">
+
+                        <figcaption>
+							<h4>WORKOUT</h4>
+						</figcaption>
+					</figure>
+				</li>
+                </a>
+			</ul>
+
+		</div>
+		<div class="about">
+			<h3 class="tittle">About Us</h3>
+			<div class="about-info">
+				<div class="col-md-8 about-grids">
+					<h4>musiV || Music By IVjot  </h4>
+					<strong>
+                    <p>This music website is a simple, beautiful, and free way to listen to all your favorite Punjabi , English , bollywood , EDM , Dubstep ,Workout and Devotional music  on the go! </p>
+					</strong>
+                        <div class="about-row">
+						<div class="col-md-4 about-imgs">
+							<img src="{% static "music/images/g3.jpg" %}" alt="" class="img-responsive zoom-img"/>
+						</div>
+						<div class="col-md-4 about-imgs">
+							<img src="{% static "music/images/g4.jpg" %}" alt=""  class="img-responsive zoom-img"/>
+						</div>
+						<div class="col-md-4 about-imgs">
+							<img src="{% static "music/images/g5.jpg" %}" alt=""  class="img-responsive zoom-img"/>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="col-md-4 about-grids">
+					<h4>Our Advantages</h4>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>01</h5>
+						</div>
+						<div class="pince-right">
+						<strong>	<p>The smartest SEARCH gives the fastest results .</p></strong>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>02</h5>
+						</div>
+						<div class="pince-right">
+							<strong><p>The largest library on the web make it easy to listen to anything even  hard-to-find classics.</p></strong>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>03</h5>
+						</div>
+						<div class="pince-right">
+						<strong>	<p>musiV is a fully responsive website which provides full access to all your music, anywhere, anytime..</p></strong>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+	</div>
+	<!--//about-->
+	<!-- testimonials -->
+	<div class="testimonials">
+			<h3 class="tittle">Testimonials</h3>
+			<section class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<div class="testimonials-grid">
+								<div class="testimonials-grid-left1">
+									<img src="{% static "music/images/t4.jpg" %}" alt=" " class="img-responsive" />
+								</div>
+								<div class="testimonials-grid-right1">
+									<p><span>Mrs Seemma Singh</span>Great user interface and an interesting mix of songs. One of its kind music website</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</li>
+						<li>
+							<div class="testimonials-grid">
+								<div class="testimonials-grid-left1">
+									<img src="{% static "music/images/t2.jpg" %}" alt=" " class="img-responsive" />
+								</div>
+								<div class="testimonials-grid-right1">
+									<p><span>Paras garg</span>Fantasic collection of songs even found some hard-to-found classics-- strongly reccomended..</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</li>
+						<li>
+							<div class="testimonials-grid">
+								<div class="testimonials-grid-left1">
+									<img src="{% static "music/images/t3.jpg" %}" alt="" class="img-responsive" />
+								</div>
+								<div class="testimonials-grid-right1">
+									<p><span>Manya Madaan</span>Fantasic UI/UX designs with smooth and dymanic functionality -- Result of a determined work..</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+
+		<!--footer-->
+			<div class="footer">
+					<div class="col-md-3 footer-grid">
+						<h4>Project</h4>
+						<ul>
+							<li>musIV</li>
+							<li>Industrial Training</li>
+							<li>GTBIT</li>
+							<li>by-Ivjot</li>
+						</ul>
+					</div>
+					<div class="col-md-3 footer-grid">
+						<h4>Genre</h4>
+						<ul>
+							<li><a href="{% url 'music:punjabi' %}">PUNJABI MUSIC</a></li>
+							<li><a href="{% url 'music:english' %}">ENGLISH Music</a></li>
+							<li><a href="{% url 'music:hindi' %}">HINDI Music</a></li>
+
+                            <li><a href="{% url 'music:edm' %}">EDM</a></li>
+
+                            <li><a href="{% url 'music:devotional' %}">DEVOTIONAL</a></li>
+
+                            <li><a href="{% url 'music:workout' %}">WORKOUT</a></li>
+
+						</ul>
+					</div>
+					<div class="col-md-3 footer-grid">
+						<h4>Navigator</h4>
+						<ul>
+							<li><a href="{% url 'music:index' %}">musIV</a></li>
+                            </br>
+							<li><a href="{% url 'music:albums' %}">Albums</a></li>
+                            </br>
+							<li><a href="{% url 'music:songs' 'all' %}">Songs</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 footer-grid">
+						<h2><a href="index.html">musIV || Music By IVjot</a></h2>
+                        </br>
+						<p>&copy; Ivjot </p>
+					</div>
+					<div class="clearfix"></div>
+			</div>
+		<!--//footer-->
+	</div>
+	<div class="clearfix"></div>
+</div>
+</div>
+
+<!-- //banner -->
+<!-- for bootstrap working -->
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<!-- Use downloaded version of Bootstrap -->
+<script type="text/javascript" src={% static "music/js/bootstrap.min.js" %}></script>
+
+</body>
+</html>
